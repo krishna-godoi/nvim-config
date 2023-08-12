@@ -85,16 +85,6 @@ _G.packer_plugins = {
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
-  ["cellular-automaton.nvim"] = {
-    loaded = true,
-    path = "/home/kris/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
-    url = "https://github.com/eandrju/cellular-automaton.nvim"
-  },
-  ["cloak.nvim"] = {
-    loaded = true,
-    path = "/home/kris/.local/share/nvim/site/pack/packer/start/cloak.nvim",
-    url = "https://github.com/laytan/cloak.nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -119,11 +109,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  ["copilot.vim"] = {
-    loaded = true,
-    path = "/home/kris/.local/share/nvim/site/pack/packer/start/copilot.vim",
-    url = "https://github.com/github/copilot.vim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -160,6 +145,19 @@ _G.packer_plugins = {
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-code-action-menu"] = {
+    commands = { "CodeActionMenu" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "/home/kris/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu",
+    url = "https://github.com/weilbith/nvim-code-action-menu"
+  },
+  ["nvim-highlight-colors"] = {
+    loaded = true,
+    path = "/home/kris/.local/share/nvim/site/pack/packer/start/nvim-highlight-colors",
+    url = "https://github.com/brenoprata10/nvim-highlight-colors"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -190,11 +188,6 @@ _G.packer_plugins = {
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["refactoring.nvim"] = {
-    loaded = true,
-    path = "/home/kris/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
-    url = "https://github.com/theprimeagen/refactoring.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -216,10 +209,20 @@ _G.packer_plugins = {
     path = "/home/kris/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
-  ["zen-mode.nvim"] = {
+  ["vim-surround"] = {
     loaded = true,
-    path = "/home/kris/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
-    url = "https://github.com/folke/zen-mode.nvim"
+    path = "/home/kris/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/kris/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["vim-wakatime"] = {
+    loaded = true,
+    path = "/home/kris/.local/share/nvim/site/pack/packer/start/vim-wakatime",
+    url = "https://github.com/wakatime/vim-wakatime"
   }
 }
 
@@ -232,6 +235,18 @@ time([[Config for catppuccin]], false)
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\nC\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\nicons\1\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.api.nvim_create_user_command, 'CodeActionMenu', function(cmdargs)
+          require('packer.load')({'nvim-code-action-menu'}, { cmd = 'CodeActionMenu', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-code-action-menu'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('CodeActionMenu ', 'cmdline')
+      end})
+time([[Defining lazy-load commands]], false)
+
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

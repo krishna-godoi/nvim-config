@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  'nvim-telescope/telescope.nvim', tag = '0.1.2',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -41,11 +41,14 @@ return require('packer').startup(function(use)
 			end,}
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
-  use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("lewis6991/gitsigns.nvim")
   use("tpope/vim-fugitive")
-  use("nvim-treesitter/nvim-treesitter-context");
+  use("tpope/vim-surround")
+  use("nvim-treesitter/nvim-treesitter-context")
+  use("christoomey/vim-tmux-navigator")
+  use("wakatime/vim-wakatime")
+  use("brenoprata10/nvim-highlight-colors")
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -70,10 +73,10 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use("folke/zen-mode.nvim")
-  use("github/copilot.vim")
-  use("eandrju/cellular-automaton.nvim")
-  use("laytan/cloak.nvim")
+  require('packer').use({
+      'weilbith/nvim-code-action-menu',
+      cmd = 'CodeActionMenu',
+  })
 
 end)
 
