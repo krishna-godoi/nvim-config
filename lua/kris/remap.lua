@@ -33,3 +33,4 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.c.onfig/nvim/lua/kris/packer.lua<CR>");
 
+vim.keymap.set("n", "<leader>gs", ":Git \n" )
