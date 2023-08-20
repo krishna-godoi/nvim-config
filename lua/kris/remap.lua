@@ -1,4 +1,3 @@
-
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -27,7 +26,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>r", [[:%s/]])
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.c.onfig/nvim/lua/kris/packer.lua<CR>");
+vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/kris/packer.lua<CR>");
 
 vim.keymap.set("n", "<leader>gs", ":Git \n" )
 vim.keymap.set("n", "x", '"_x')
