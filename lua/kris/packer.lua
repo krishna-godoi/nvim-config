@@ -14,11 +14,11 @@ return require('packer').startup(function(use)
   }
 
   use({
-	  'catppuccin/nvim',
-	  as = 'catppuccin',
-	  config = function()
-		  vim.cmd('colorscheme catppuccin')
-	  end
+      'catppuccin/nvim',
+      as = 'catppuccin',
+      config = function()
+          vim.cmd('colorscheme catppuccin')
+      end
   })
 
   use({
@@ -34,49 +34,43 @@ return require('packer').startup(function(use)
   })
 
   use {
-			'nvim-treesitter/nvim-treesitter',
-			run = function()
-				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-				ts_update()
-			end,}
-  use("nvim-treesitter/playground")
-  use("theprimeagen/harpoon")
-  use("mbbill/undotree")
-  use("lewis6991/gitsigns.nvim")
-  use("tpope/vim-fugitive")
-  use("tpope/vim-surround")
-  use("nvim-treesitter/nvim-treesitter-context")
-  use("christoomey/vim-tmux-navigator")
-  use("wakatime/vim-wakatime")
-  use("brenoprata10/nvim-highlight-colors")
+      'nvim-treesitter/nvim-treesitter',
+      run = function()
+          local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+          ts_update()
+      end,}
+      use("nvim-treesitter/playground")
+      use("theprimeagen/harpoon")
+      use("mbbill/undotree")
+      use("lewis6991/gitsigns.nvim")
+      use("tpope/vim-fugitive")
+      use("tpope/vim-surround")
+      use("nvim-treesitter/nvim-treesitter-context")
+      use("christoomey/vim-tmux-navigator")
+      use("wakatime/vim-wakatime")
+      use("brenoprata10/nvim-highlight-colors")
+      use {
+          'VonHeikemen/lsp-zero.nvim',
+          branch = 'v1.x',
+          requires = {
+              -- LSP Support
+              {'neovim/nvim-lspconfig'},
+              {'williamboman/mason.nvim'},
+              {'williamboman/mason-lspconfig.nvim'},
+              -- Autocompletion
+              {'hrsh7th/nvim-cmp'},
+              {'hrsh7th/cmp-buffer'},
+              {'hrsh7th/cmp-path'},
+              {'saadparwaiz1/cmp_luasnip'},
+              {'hrsh7th/cmp-nvim-lsp'},
+              {'hrsh7th/cmp-nvim-lua'},
+          }
+      }
 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
-
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
-
-  require('packer').use({
-      'weilbith/nvim-code-action-menu',
-      cmd = 'CodeActionMenu',
-  })
+      require('packer').use({
+          'weilbith/nvim-code-action-menu',
+          cmd = 'CodeActionMenu',
+      })
 
 end)
 
